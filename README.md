@@ -1,6 +1,6 @@
-# Petak Umpet DFS
+# Hide and Seek Game
 
-Project petak umpet DFS. Enjoy!
+Hide and seek game with Graph and DFS Algorithm.
 
 ## PROBLEM DESCRIPTION
 
