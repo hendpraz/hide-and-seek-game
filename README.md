@@ -39,6 +39,7 @@ What things you need to install:
 ```
 C# IDE and Compiler
 ```
+* [VISUAL STUDIO COMMUNITY 2017](https://visualstudio.microsoft.com) - IDE and Compiler for C#
 
 ## Running the Tests
 
@@ -71,10 +72,6 @@ NO
 NO
 YES
 ```
-
-## Built With
-
-* [VISUAL STUDIO COMMUNITY 2017](https://visualstudio.microsoft.com) - IDE
 
 ## Contributing
 
