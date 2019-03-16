@@ -40,7 +40,7 @@ What things you need to install:
 C# IDE and Compiler
 ```
 
-## Running the tests
+## Running the Tests
 
 Run the program,
 Sample input:
@@ -63,7 +63,7 @@ Sample input:
 1 9 1
 ```
 
-Sample output
+Sample output:
 ```
 YES
 NO
@@ -82,7 +82,7 @@ YES
 
 **Muhammad Hendry Prasetya 13517105** - *Backend Programmer* - [GitHub Profile](https://github.com/hendpraz)
 
-**Sekar Larasati Muslimah 13517xxx**
+**Sekar Larasati Muslimah 13517114**
 
 ## Oliver and the Game Case
 
