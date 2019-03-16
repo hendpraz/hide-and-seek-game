@@ -80,7 +80,7 @@ YES
 
 **Harry Rahmadi Munly 13517033**
 
-**Muhammad Hendry Prasetya 13517105** *Backend Programmer* [GitHub Profile](https://github.com/hendpraz)
+**Muhammad Hendry Prasetya 13517105** - *Backend Programmer* - [GitHub Profile](https://github.com/hendpraz)
 
 **Sekar Larasati Muslimah 13517xxx**
 
