@@ -94,32 +94,41 @@ public class AntahBerantah
     static public void SolveIt(bool goAway, int Goal, int Start)
     {
             //Menyelesaikan masalah
+            bool solvable;
+            //PERBAIKAN ALGORITMA
             pathArr[countPath] = Start;
             countPath++;
-            
-            if (Start == Goal)
+
+            solvable = (Goal == Start);
+            solvable = solvable || ((goAway) && (nodeVal[Goal] > nodeVal[Start]));
+            solvable = solvable || ((!goAway) && (nodeVal[Goal] < nodeVal[Start]));
+            //CEK SOLVABILITAS
+            if (solvable)
             {
-                //Ketemu lokasi Jose
-                solved = true;
-                Console.WriteLine("YES");
-                //printPath();
-            }
-            else
-            {
-                foreach (int i in myList[Start])
+                if (Start == Goal)
                 {
-                    bool canGo = goAway && (nodeVal[i] > nodeVal[Start]);
-                    canGo = canGo || (!goAway && (nodeVal[i] < nodeVal[Start]));
-                    //Hanya bisa DFS jika : ada node yang bisa ditelusuri dan belum mendapatkan solusi
-                    if ((canGo) && (!solved))
+                    //Ketemu lokasi Jose
+                    solved = true;
+                    Console.WriteLine("YES");
+                    //printPath();
+                }
+                else
+                {
+                    foreach (int i in myList[Start])
                     {
-                        //DO DFS HERE
-                        SolveIt(goAway, Goal, i);
-                        countPath--;
+                        bool canGo = goAway && (nodeVal[i] > nodeVal[Start]);
+                        canGo = canGo || (!goAway && (nodeVal[i] < nodeVal[Start]));
+                        //Hanya bisa DFS jika : ada node yang bisa ditelusuri dan belum mendapatkan solusi
+                        if ((canGo) && (!solved))
+                        {
+                            //DO DFS HERE
+                            SolveIt(goAway, Goal, i);
+                            countPath--;
+                        }
                     }
                 }
             }
-    }
+        }
 
     static public void printPath()
     {
