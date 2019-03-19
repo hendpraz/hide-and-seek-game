@@ -28,8 +28,11 @@ Print "YES" or "NO" for each query depending on the answer to that query.
 
 CONSTRAINTS :
 1 ≤ N ≤ 10^5
+
 1 ≤ A,B ≤ N
+
 1 ≤ Q ≤ 5*10^5
+
 1 ≤ X,Y ≤ N
 
 ### Prerequisites
