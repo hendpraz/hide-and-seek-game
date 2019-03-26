@@ -44,6 +44,7 @@ namespace AntahKingdom
             {
                 string str = file2.ReadLine();
                 countQ++;
+                label5.Text = str;
                 if (countQ == Q)
                 {
                     Next.Visible = false;
@@ -76,7 +77,7 @@ namespace AntahKingdom
                 buatMap(mapLoc1);
                 //Siapkan dan tampilkan graf
                 resetWarna();
-                TampilkanGraph();
+                TampilkanGraph(false);
             }
             
         }
@@ -144,7 +145,7 @@ namespace AntahKingdom
         {
             //Inisialisasi Graph
             //create a form 
-            form = new System.Windows.Forms.Form();
+            
             //create a viewer object 
             viewer = new Microsoft.Glee.GraphViewerGdi.GViewer();
             //create a graph object 
@@ -200,6 +201,10 @@ namespace AntahKingdom
             pathArr[countPath] = Start;
             countPath++;
 
+            warnaiGraph();
+            TampilkanGraph(true);
+            resetWarna();
+
             //PERBAIKAN ALGORITMA
             solvable = (Goal == Start);
             solvable = solvable || ((goAway) && (nodeVal[Goal] > nodeVal[Start]));
@@ -242,9 +247,9 @@ namespace AntahKingdom
             str1 = str1 + "Ferdiant dapat menemukan Hose\n";
             str1 = str1 + "Ferdiant melalui jalur yang digambarkan";
             label5.Text = str1;
-            
+
             warnaiGraph();
-            TampilkanGraph();
+            TampilkanGraph(false);
             resetWarna();
             //MessageBox.Show(str1);
         }
@@ -289,8 +294,12 @@ namespace AntahKingdom
                 str5 = str5 + "rumah raja (titik 1) ";
                 str5 = str5 + "dari titik " + c;
                 label5.Text = (a + " " + (b + " " + (c + " TIDAK\n"))) + str5;
-                
-                TampilkanGraph();
+
+                //Beri warna titik awal
+                graph.FindNode(c.ToString()).Attr.Fillcolor = Microsoft.Glee.Drawing.Color.OrangeRed;
+
+                TampilkanGraph(false);
+                graph.FindNode(c.ToString()).Attr.Fillcolor = Microsoft.Glee.Drawing.Color.Azure;
                 //MessageBox.Show(str3 + " TIDAK\n");
             }
         }
@@ -308,6 +317,7 @@ namespace AntahKingdom
             //for (int i = 0; i < Q; i++)
             countQ++;
             str = file2.ReadLine();
+            label5.Text = str;
             //Lakukan hal yang sama dengan solve problem dari GUI
             solveFromGUI(str);
         }
@@ -318,12 +328,13 @@ namespace AntahKingdom
 
         static Microsoft.Glee.Drawing.Graph graph;
 
-        static System.Windows.Forms.Form form;
-
         static Microsoft.Glee.GraphViewerGdi.GViewer viewer;
 
-        public void TampilkanGraph()
+        static System.Windows.Forms.Form form;
+
+        public void TampilkanGraph(bool autoClose)
         {
+            form = new System.Windows.Forms.Form();
             graph.GraphAttr.EdgeAttr.ArrowHeadAtTarget = Microsoft.Glee.Drawing.ArrowStyle.None;
             graph.GraphAttr.Orientation = Microsoft.Glee.Drawing.Orientation.Landscape;
 
@@ -335,8 +346,21 @@ namespace AntahKingdom
             viewer.Dock = System.Windows.Forms.DockStyle.Fill;
             form.Controls.Add(viewer);
             form.ResumeLayout();
+
             //show the form 
+            form.StartPosition = FormStartPosition.CenterParent;
+            if (autoClose)
+            {
+                Task.Delay(TimeSpan.FromSeconds(0.75))
+        .ContinueWith((t) => form.Close(), TaskScheduler.FromCurrentSynchronizationContext());
+            }
             form.ShowDialog();
+            
+            //System.Threading.Thread.Sleep(5000);
+            //form.DialogResult = DialogResult.Abort;
+            //form.Close();
+            //form = new System.Windows.Forms.Form();
+            //viewer = new Microsoft.Glee.GraphViewerGdi.GViewer();
         }
 
         public void warnaiGraph()

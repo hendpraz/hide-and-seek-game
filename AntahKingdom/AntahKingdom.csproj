@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{989DF98E-7F9F-4D43-86D0-2CFA26793BC2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>MyName</RootNamespace>
-    <AssemblyName>MyName</AssemblyName>
+    <RootNamespace>AntahKingdom</RootNamespace>
+    <AssemblyName>AntahKingdom</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
